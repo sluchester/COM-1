@@ -18,8 +18,10 @@ xlim([0 5*T]);
 ylim([-2 2]);
 
 # transformada de fourier - fourier fast transform
+# gera um sinal de 0 até fs
 X_f = fft(x_t)/length(x_t);
 # desloca a frequência 0 da transformada de fourier para o centro do array (ou da figura que sera gerada)
+# gera um sinal de -fs/2 até fs/2
 X_f = fftshift(X_f);
 
 passo_f = length(t)/(fs+1);
