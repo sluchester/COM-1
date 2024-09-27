@@ -48,6 +48,7 @@ w3 = 2*pi*f3;
 x3_t = sin(w3*t + phi);
 
 # soma dos 3 cossenos
+# feita a normalização para fazer uma onda quadrada
 soma_t = x_t + (1/3)*x1_t + (1/5)*x2_t + (1/7)*x3_t;
 
 figure;
