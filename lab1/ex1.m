@@ -1,3 +1,5 @@
+pkg load signal;
+
 clear all; close all; clc;
 
 f= 1000;
@@ -33,7 +35,7 @@ plot(t, sinal_somado);
 xlim([0 3*T]);
 
 
-# dominio da frequencia
+% dominio da frequencia
 passo_f = length(t)/(fs+1);
 f_axis = -fs/2 : passo_f : fs/2;
 
@@ -49,6 +51,7 @@ X_fs3 = fftshift(X_fs3);
 X_fst = fft(sinal_somado)/length(sinal_somado);
 X_fst = fftshift(X_fst);
 
+% falta colocar label
 figure;
 subplot(4,1,1); hold on; grid on;
 plot(f_axis, abs(X_fs1));
@@ -62,9 +65,14 @@ plot(f_axis, abs(X_fs3));
 subplot(4,1,4); hold on; grid on;
 plot(f_axis, abs(X_fst));
 
-# calculando a potencia
-# pot_med = 1/length(t)*sum(soma_t.^2);
+% calculando a potencia
+potencia_media = 1/length(sinal_somado) * (norm(sinal_somado)).^2
 
+% densidade espectral de potencia
+[densidade_espectral, frequencias] = pwelch(sinal_somado);
 
-# norm do vetor ² da energia
-# 1/length(t) * X²
+figure; hold on; grid on;
+plot(frequencias, 10*log10(densidade_espectral));
+xlabel('Frequência (Hz)');
+ylabel('Densidade espectral de potência (dB/Hz)');
+title('Densidade Espectral de Potência usando pwelch');
