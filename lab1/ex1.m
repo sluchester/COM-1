@@ -69,10 +69,11 @@ plot(f_axis, abs(X_fst));
 potencia_media = 1/length(sinal_somado) * (norm(sinal_somado)).^2
 
 % densidade espectral de potencia
-[densidade_espectral, frequencias] = pwelch(sinal_somado);
+[densidade_espectral, frequencias] = pwelch(sinal_somado, [], [], [], fs, 'shift', 'semilogy');
 
 figure; hold on; grid on;
 plot(frequencias, 10*log10(densidade_espectral));
+xlim([-7000 7000]);
 xlabel('Frequência (Hz)');
 ylabel('Densidade espectral de potência (dB/Hz)');
 title('Densidade Espectral de Potência usando pwelch');
