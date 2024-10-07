@@ -63,7 +63,8 @@ plot(f_axis, abs(X_fs3));
 subplot(4,1,4); hold on; grid on;
 plot(f_axis, abs(X_fst));
 
+
 % filtros
-filtro_pb = 
-filtro_pa = 
-filtro_pf = 
+filtro_pb = [zeros(1,148000) ones(1,4001) zeros(1,148000)];
+filtro_pa = []
+%filtro_pf = 
