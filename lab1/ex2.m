@@ -66,5 +66,11 @@ plot(f_axis, abs(X_fst));
 
 % filtros
 filtro_pb = [zeros(1,148000) ones(1,4001) zeros(1,148000)];
-filtro_pa = []
-%filtro_pf = 
+filtro_pa = [zeros(1,154001) ones(1,145999)];
+filtro_pf = [zeros(1,146000) ones(1,2000) zeros(1,4001) ones(1,2000) zeros(1,146000)];
+
+% plotar figura dos filtros no tempo contínuo para verificar como fica e também no domínio da frequência
+figure;
+subplot(4,1,1); hold on; grid on;
+% isso aqui tá errado
+% plot(t, sum(filtro_pb));
