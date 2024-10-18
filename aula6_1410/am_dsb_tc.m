@@ -6,7 +6,7 @@ Tm= 1/fm;
 fc= 100000;
 Tc= 1/fc;
 
-fs = 60 * f;
+fs = 60 * fm;
 ts = 1/fs;
 
 t = 0 : ts : 1;
@@ -30,12 +30,12 @@ sinal_modulado3 = (m_t.*c_t) + (Ao.*c_t);
 figure;
 subplot(3,1,1); hold on; grid on;
 plot(t, sinal_modulado);
-xlim([0 5*T]);
+xlim([0 5*Tm]);
 
 subplot(3,1,2); hold on; grid on;
 plot(t, sinal_modulado2);
-xlim([0 5*T]);
+xlim([0 5*Tm]);
 
 subplot(3,1,3); hold on; grid on;
 plot(t, sinal_modulado3);
-xlim([0 5*T]);
+xlim([0 5*Tm]);

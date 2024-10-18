@@ -6,17 +6,17 @@ duracao = 1;      % Duração de 1 segundo
 num_amostras = fs * duracao; % Número de amostras = fs * duração
 
 var_n = 1;
-ruido = sqrt(var_n)*randn(1,1000000);
+ruido = sqrt(var_n)*randn(1, num_amostras); % Gera ruído com 10.000 amostras
 
-sinal_t = 5;
-sinal_r = sinal_t + ruido;
+% plotando o ruído no domínio do tempo
+tempo = 0 : T : (duracao - T); % Cria o vetor de tempo com 10.000 pontos
 
-subplot(2,1,1); hold on; grid on;
-hist(ruido, 100);
+plot(tempo, ruido);
+title('Ruído com Distribuição Normal');
+xlabel('Tempo (s)');
+ylabel('Amplitude');
 
-subplot(2,1,2);
-hist(sinal_r, 100);
 
-Pot_ruido = (1/length(ruido))*sum(ruido.^2)
-Pot_sinal = (1/length(sinal_t))*sum(sinal_t.^2)
-SNR_dB = 10*log10(Pot_sinal/Pot_ruido)
+# Pot_ruido = (1/length(ruido))*sum(ruido.^2)
+# Pot_sinal = (1/length(sinal_t))*sum(sinal_t.^2)
+# SNR_dB = 10*log10(Pot_sinal/Pot_ruido)
