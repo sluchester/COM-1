@@ -53,7 +53,7 @@ plot(f_axis, abs(Xf_sinalMod));
 
 # demodulação
 
-d_t = cos(cos(2*pi*f*t));q
+d_t = cos(cos(2*pi*f*t));
 
 st_demod = d_t .* sinal_modulado;
 
@@ -70,6 +70,6 @@ subplot(4,1,3); hold on; grid on;
 plot(t, sinal_modulado);
 xlim([0 3*T]);
 
-subplot(4,1,3); hold on; grid on;
+subplot(4,1,4); hold on; grid on;
 plot(t, st_demod);
 xlim([0 3*T]);
