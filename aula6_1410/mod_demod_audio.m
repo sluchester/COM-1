@@ -1,5 +1,4 @@
 clear all; close all; clc;
-
 pkg load signal;
 
 filename= 'audio_com.wav';
@@ -11,28 +10,36 @@ filename= 'audio_com.wav';
 % Período de amostragem
 ts = 1/fs;
 
-% Vetor de tempo
-t = (0:length(y)-1)/fs;
+% Gera o vetor de tempo com base no tamanho de y
+t = (0:length(y')-1) * ts;
 
-% Normalizar o sinal para amplitude máxima de 1
-y_norm = y / max(abs(y));
+% portadora
+fc = 10000;
+tc = 1/fc;
 
-% Calcular a FFT do sinal para encontrar a frequência dominante
-Y = fft(y_norm);
-Y_mag = abs(Y(1:floor(length(Y)/2)));  % Pega metade do espectro (somente parte positiva)
+st_c = cos(2*pi*fc*t);
 
-% Criar o eixo de frequência (apenas parte positiva)
-f_axis = (0:length(Y_mag)-1)*(fs/length(Y));
+% sinal_modulado = apos passar pela portadora
+% sinal modulante = antes de passar portadora
 
-% Encontrar a frequência dominante
-[~, idx] = max(Y_mag);  % Índice da frequência dominante
-f_dominante = f_axis(idx);  % Valor da frequência dominante
+sinal_modulado = st_c .* y';
+plot(t,sinal_modulado);
 
-% Plotar o espectro
-# figure;
-# plot(f_axis, Y_mag);
-# title('Magnitude do Espectro de Frequência');
-# xlabel('Frequência (Hz)');
-# ylabel('Amplitude');
+% resposta em frequencia
+passo_f = fs/length(t);
+f_axis = -fs/2 : passo_f : ((fs/2)-passo_f);
 
-% criacao do sinal para 
+Xf_sinalModulado = fft(sinal_modulado)/length(sinal_modulado);
+Xf_sinalModulado = fftshift(Xf_sinalModulado);
+
+% Encontra a maior magnitude e a frequência correspondente
+[~, idx] = max(Xf_sinalModulado);  % Encontra o índice da maior magnitude
+f_dominante = abs(f_axis(idx));  % A frequência dominante é a maior
+
+figure; hold on; grid on;
+plot(f_axis, abs(Xf_sinalModulado));
+
+% sinal demodulador
+st_carrier_demod = cos(2*pi*fc*t);
+sinal_demodulado = st_carrier_demod .* sinal_modulado;
+
