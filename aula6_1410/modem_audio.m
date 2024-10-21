@@ -63,5 +63,13 @@ ylabel('Amplitude');
 title(['Sinal Aproximado com f = ', num2str(f_dominante), ' Hz']);
 
 % fazer o sinal passar pela portadora
+fc = 10000;
+tc = 1/fc;
 
-% demodular ele
+c_t = cos(2*pi*fc*t);
+
+sinal_modulado = c_t .* sinal_aproximado;
+
+
+
+% demodular o sinal
