@@ -72,4 +72,6 @@ sinal_modulado = c_t .* sinal_aproximado;
 
 
 
+% filtrar
+
 % demodular o sinal
