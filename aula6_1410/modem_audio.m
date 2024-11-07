@@ -3,6 +3,9 @@ pkg load signal;
 
 filename= 'audio_com.wav';
 
+% sinal_modulado = apos passar pela portadora
+% sinal modulante = antes de passar portadora
+
 % o novo sinal agora é y
 % fs é a frequencia amostrada do sinal
 [y, fs] = audioread(filename);
@@ -69,7 +72,5 @@ tc = 1/fc;
 c_t = cos(2*pi*fc*t);
 
 sinal_modulado = c_t .* sinal_aproximado;
-
-
 
 % demodular o sinal
