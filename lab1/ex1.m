@@ -21,19 +21,27 @@ figure;
 subplot(4,1,1); hold on; grid on;
 plot(t, s1_t);
 xlim([0 3*T]);
+xlabel('Tempo (s)');
+ylabel('Amplitude (V)');
+title('Senos no tempo');
 
 subplot(4,1,2); hold on; grid on;
 plot(t, s2_t);
 xlim([0 3*T]);
+xlabel('Tempo (s)');
+ylabel('Amplitude (V)');
 
 subplot(4,1,3); hold on; grid on;
 plot(t, s3_t);
 xlim([0 3*T]);
+xlabel('Tempo (s)');
+ylabel('Amplitude (V)');
 
 subplot(4,1,4); hold on; grid on;
 plot(t, sinal_somado);
 xlim([0 3*T]);
-
+xlabel('Tempo (s)');
+ylabel('Amplitude (V)');
 
 % dominio da frequencia
 passo_f = length(t)/(fs+1);
@@ -55,15 +63,24 @@ X_fst = fftshift(X_fst);
 figure;
 subplot(4,1,1); hold on; grid on;
 plot(f_axis, abs(X_fs1));
+xlabel('Frequência (Hz)');
+ylabel('Magnitude');
+title('Domínio da Frequência');
 
 subplot(4,1,2); hold on; grid on;
 plot(f_axis, abs(X_fs2));
+xlabel('Frequência (Hz)');
+ylabel('Magnitude');
 
 subplot(4,1,3); hold on; grid on;
 plot(f_axis, abs(X_fs3));
+xlabel('Frequência (Hz)');
+ylabel('Magnitude');
 
 subplot(4,1,4); hold on; grid on;
 plot(f_axis, abs(X_fst));
+xlabel('Frequência (Hz)');
+ylabel('Magnitude');
 
 % calculando a potencia
 potencia_media = 1/length(sinal_somado) * (norm(sinal_somado)).^2
