@@ -73,4 +73,6 @@ c_t = cos(2*pi*fc*t);
 
 sinal_modulado = c_t .* sinal_aproximado;
 
+% filtrar
+
 % demodular o sinal
