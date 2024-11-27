@@ -41,13 +41,13 @@ sig_m2c2 = y2 .* m2_t;
 sig_m3c3 = y3 .* m3_t;
 
 % Parâmetros do filtro passa-faixa
-order = 500;  % Ordem do filtro
+order = 1500;  % Ordem do filtro
 
 % Faixas de frequência para cada sinal, normalizadas por fs/2
 % Definimos uma largura de banda para permitir as frequências próximas das portadoras
-band1 = [fc1 + 1500, fc1 + 3000] / (fs / 2);
-band2 = [fc2 + 1500, fc2 + 3000] / (fs / 2);
-band3 = [fc3 + 1500, fc3 + 3000] / (fs / 2);
+band1 = [fc1 - 1500, fc1 + 1500] / (fs / 2);
+band2 = [fc2 - 1500, fc2 + 1500] / (fs / 2);
+band3 = [fc3 - 1500, fc3 + 1500] / (fs / 2);
 
 % Criar filtros passa-faixa usando fir1
 b1 = fir1(order, band1, 'bandpass');
