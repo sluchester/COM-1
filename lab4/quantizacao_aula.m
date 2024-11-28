@@ -27,3 +27,4 @@ plot(sinalNRZ);
 
 subplot(3,1,3); grid on; hold on;
 plot(r_t);
+
